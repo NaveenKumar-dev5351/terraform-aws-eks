@@ -52,7 +52,7 @@ pipeline {
                     steps {
                         script {
                             build job: '20-bastion',
-                            propogate: false, // even SG fails VPC will not be effected
+                            propagate: false, // even SG fails VPC will not be effected
                             wait: false // VPC will not wait for SG pipeline completion
                         }
                     }
@@ -61,7 +61,7 @@ pipeline {
                     steps {
                         script {
                             build job: '80-eks',
-                            propogate: false, // even SG fails VPC will not be effected
+                            propagate: false, // even SG fails VPC will not be effected
                             wait: false // VPC will not wait for SG pipeline completion
 
                         }
@@ -71,7 +71,7 @@ pipeline {
                     steps {
                         script {
                             build job: '60-acm',
-                            propogate: false, // even SG fails VPC will not be effected
+                            propagate: false, // even SG fails VPC will not be effected
                             wait: false // VPC will not wait for SG pipeline completion
                         }
                     }
@@ -84,7 +84,7 @@ pipeline {
             steps {
                 script {
                     build job: '70-frontend_alb',
-                    propogate: false, // even SG fails VPC will not be effected
+                    propagate: false, // even SG fails VPC will not be effected
                     wait: false // VPC will not wait for SG pipeline completion
 
                 }
