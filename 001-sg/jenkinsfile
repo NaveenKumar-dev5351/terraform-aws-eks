@@ -15,7 +15,7 @@ pipeline {
                 script {
                     withAWS(credentials: 'aws-creds', region: 'us-east-1') {
                         sh """
-                            cd 00-vpc
+                            cd 001-sg
                             terraform init -reconfigure
                         """
                     }
@@ -50,16 +50,6 @@ pipeline {
                     """
                 }
 
-            }
-        }
-    }
-    //downsteram job
-    stage('Trigger SG') {
-        steps {
-            script {
-                build job: '001-sg',
-                propagate: false,  // even SG fails VPC will not be effected
-                wait: false // VPC will not wait for SG pipeline completion
             }
         }
     }
