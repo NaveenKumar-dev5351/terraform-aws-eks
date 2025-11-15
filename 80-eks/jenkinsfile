@@ -11,7 +11,7 @@ pipeline {
     //Build
     stages {
         stage ('init') {
-            steps {
+            steps { 
                 script {
                     withAWS(credentials: 'aws-creds', region: 'us-east-1') {
                         sh """
